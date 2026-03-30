@@ -1,0 +1,7 @@
+{
+    "name": "beyond-syllabus/backend",
+    "description": "Backend API for Beyond the Syllabus 2026",
+    "require": {
+        "phpmailer/phpmailer": "^6.9.1"
+    }
+}
