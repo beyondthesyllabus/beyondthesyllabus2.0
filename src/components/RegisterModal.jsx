@@ -24,8 +24,8 @@ const RegisterModal = ({ isOpen, onClose }) => {
     setMessage('');
 
     try {
-      // Directs request to the PythonAnywhere Flask API
-      const response = await fetch('https://yourusername.pythonanywhere.com/register', {
+      // Directs request to the Python API (works locally and on Vercel)
+      const response = await fetch('/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ const RegisterModal = ({ isOpen, onClose }) => {
       }
     } catch (error) {
       setStatus('error');
-      setMessage('Network error. Ensure XAMPP Apache is running and the backend folder is inside htdocs!');
+      setMessage('Network error. Ensure the Python Flask backend is running!');
     }
   };
 
