@@ -24,8 +24,8 @@ const RegisterModal = ({ isOpen, onClose }) => {
     setMessage('');
 
     try {
-      // Directs request to the local XAMPP PHP server
-      const response = await fetch('http://localhost/backend/api/register.php', {
+      // Directs request to the PythonAnywhere Flask API
+      const response = await fetch('https://yourusername.pythonanywhere.com/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -42,7 +42,8 @@ const RegisterModal = ({ isOpen, onClose }) => {
         setFormData({ fullName: '', email: '', department: '', level: '', interest: 'Both' });
       } else {
         setStatus('error');
-        setMessage(data.message || 'Validation failed on the server.');
+        // Show the actual message from PHP if it exists
+        setMessage(data.message || 'Server-side validation failed. Please check all fields.');
       }
     } catch (error) {
       setStatus('error');
