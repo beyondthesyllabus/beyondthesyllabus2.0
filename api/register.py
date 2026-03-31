@@ -20,7 +20,7 @@ DB_CONFIG = {
     'port': int(os.environ.get('TIDB_PORT', os.environ.get('DB_PORT', '4000'))),
     'user': os.environ.get('TIDB_USER', os.environ.get('DB_USER', 'root')),
     'password': os.environ.get('TIDB_PASSWORD', os.environ.get('DB_PASS', '')),
-    'database': os.environ.get('TIDB_DB_NAME', os.environ.get('DB_NAME', 'beyond_syllabus')),
+    'database': os.environ.get('TIDB_DATABASE', os.environ.get('DB_NAME', 'beyond_syllabus')),
     'ssl_disabled': False,
 }
 
