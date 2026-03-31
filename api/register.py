@@ -9,16 +9,19 @@ from smtplib import SMTP
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import os
+import ssl
 
 app = Flask(__name__)
 CORS(app)
 
-# Database Configuration — uses environment variables set in Vercel dashboard
+# Database Configuration — TiDB Cloud environment variables (set by Vercel integration)
 DB_CONFIG = {
-    'host': os.environ.get('DB_HOST', 'localhost'),
-    'user': os.environ.get('DB_USER', 'root'),
-    'password': os.environ.get('DB_PASS', ''),
-    'database': os.environ.get('DB_NAME', 'beyond_syllabus')
+    'host': os.environ.get('TIDB_HOST', os.environ.get('DB_HOST', 'localhost')),
+    'port': int(os.environ.get('TIDB_PORT', os.environ.get('DB_PORT', '4000'))),
+    'user': os.environ.get('TIDB_USER', os.environ.get('DB_USER', 'root')),
+    'password': os.environ.get('TIDB_PASSWORD', os.environ.get('DB_PASS', '')),
+    'database': os.environ.get('TIDB_DB_NAME', os.environ.get('DB_NAME', 'beyond_syllabus')),
+    'ssl_disabled': False,
 }
 
 # Email Configuration
