@@ -58,7 +58,12 @@ def register():
         
         # Ensure we are using the right database name
         target_db = DB_CONFIG['database']
-        cursor.execute(f"USE {target_db}")
+        try:
+            cursor.execute(f"USE {target_db}")
+        except Exception as db_err:
+            cursor.execute("SHOW DATABASES")
+            available = [row[0] for row in cursor.fetchall()]
+            raise Exception(f"Database Error: '{target_db}' not found. Available databases are: {', '.join(available)}")
         
         query = "INSERT INTO attendees (full_name, email, department, level, interest) VALUES (%s, %s, %s, %s, %s)"
         cursor.execute(query, (full_name, email, department, level, interest))
