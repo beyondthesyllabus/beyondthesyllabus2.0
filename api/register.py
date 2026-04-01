@@ -14,14 +14,13 @@ import ssl
 app = Flask(__name__)
 CORS(app)
 
-# Database Configuration — TiDB Cloud environment variables (set by Vercel integration)
+# Database Configuration
 DB_CONFIG = {
     'host': os.environ.get('TIDB_HOST', os.environ.get('DB_HOST', 'localhost')),
     'port': int(os.environ.get('TIDB_PORT', os.environ.get('DB_PORT', '4000'))),
     'user': os.environ.get('TIDB_USER', os.environ.get('DB_USER', 'root')),
     'password': os.environ.get('TIDB_PASSWORD', os.environ.get('DB_PASS', '')),
-    'database': os.environ.get('TIDB_DATABASE', os.environ.get('DB_NAME', 'beyond_syllabus')),
-    'ssl_disabled': False,
+    'database': os.environ.get('DB_NAME', os.environ.get('TIDB_DATABASE', 'beyond_syllabus')),
 }
 
 # Email Configuration
@@ -48,8 +47,19 @@ def register():
             return jsonify({"status": "error", "message": "All fields are required"}), 400
 
         # Create Database Record
-        conn = mysql.connector.connect(**DB_CONFIG)
+        conn = mysql.connector.connect(
+            host=DB_CONFIG['host'],
+            port=DB_CONFIG['port'],
+            user=DB_CONFIG['user'],
+            password=DB_CONFIG['password']
+            # We select the database manually below
+        )
         cursor = conn.cursor()
+        
+        # Ensure we are using the right database name
+        target_db = DB_CONFIG['database']
+        cursor.execute(f"USE {target_db}")
+        
         query = "INSERT INTO attendees (full_name, email, department, level, interest) VALUES (%s, %s, %s, %s, %s)"
         cursor.execute(query, (full_name, email, department, level, interest))
         conn.commit()

@@ -10,12 +10,12 @@ from email.mime.multipart import MIMEMultipart
 app = Flask(__name__)
 CORS(app)
 
-# Database Configuration (Placeholder - User will fill this in PythonAnywhere)
+# Database Configuration (Local XAMPP MySQL)
 DB_CONFIG = {
-    'host': 'yourusername.mysql.pythonanywhere-services.com',
-    'user': 'yourusername',
-    'password': 'yourpassword',
-    'database': 'yourusername$beyond_syllabus'
+    'host': 'localhost',
+    'user': 'root',
+    'password': '',
+    'database': 'beyond_syllabus'
 }
 
 # Email Configuration
