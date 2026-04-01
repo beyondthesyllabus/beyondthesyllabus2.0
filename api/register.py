@@ -46,25 +46,34 @@ def register():
         if not all([full_name, email, department, level, interest]):
             return jsonify({"status": "error", "message": "All fields are required"}), 400
 
-        # Create Database Record
+        # 1. Connect first without selecting a database
         conn = mysql.connector.connect(
             host=DB_CONFIG['host'],
             port=DB_CONFIG['port'],
             user=DB_CONFIG['user'],
             password=DB_CONFIG['password']
-            # We select the database manually below
         )
         cursor = conn.cursor()
         
-        # Ensure we are using the right database name
+        # 2. Force create and use the database
         target_db = DB_CONFIG['database']
-        try:
-            cursor.execute(f"USE {target_db}")
-        except Exception as db_err:
-            cursor.execute("SHOW DATABASES")
-            available = [row[0] for row in cursor.fetchall()]
-            raise Exception(f"Database Error: '{target_db}' not found. Available databases are: {', '.join(available)}")
+        cursor.execute(f"CREATE DATABASE IF NOT EXISTS {target_db}")
+        cursor.execute(f"USE {target_db}")
         
+        # 3. Force create the table if missing
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS attendees (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                full_name VARCHAR(255) NOT NULL,
+                email VARCHAR(255) NOT NULL,
+                department VARCHAR(255) NOT NULL,
+                level VARCHAR(50) NOT NULL,
+                interest ENUM('Tech', 'Web3', 'Both') NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        """)
+        
+        # 4. Insert data
         query = "INSERT INTO attendees (full_name, email, department, level, interest) VALUES (%s, %s, %s, %s, %s)"
         cursor.execute(query, (full_name, email, department, level, interest))
         conn.commit()
