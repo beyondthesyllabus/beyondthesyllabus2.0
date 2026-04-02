@@ -5,6 +5,7 @@ POST /api/register
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import mysql.connector
+import requests
 from smtplib import SMTP
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -28,7 +29,7 @@ ORGANIZER_EMAIL = "beyondthesyllabus001@gmail.com"
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
 SMTP_USER = os.environ.get('SMTP_USER', 'beyondthesyllabus001@gmail.com')
-SMTP_PASS = os.environ.get('SMTP_PASS', 'ptpcuirlocxytbbi')
+SMTP_PASS = os.environ.get('SMTP_PASS', 'kpveudmcvwejqple')
 
 
 @app.route('/api/register', methods=['POST'])
@@ -90,6 +91,20 @@ def register():
         conn.commit()
         cursor.close()
         conn.close()
+
+        # Sync to Google Sheets
+        try:
+            GOOG_SHEET_URL = "https://script.google.com/macros/s/AKfycbxXiFNNjLJV0YHGwQsxrferhe6fd2K3fuiJ41kLbgl3bVqTOROcd_iZl2zi0328htV3/exec"
+            sheet_data = {
+                "fullName": full_name,
+                "email": email,
+                "department": department,
+                "level": level,
+                "interest": interest
+            }
+            requests.post(GOOG_SHEET_URL, json=sheet_data, timeout=5)
+        except Exception as sheet_err:
+            print(f"Google Sheets Sync failed: {sheet_err}")
 
         # Try to send email notification
         try:
