@@ -13,7 +13,7 @@ const Hero = ({ onOpenRegister }) => {
   const magneticButtonRef = useMagneticButton();
   const { visibleElements } = useScrollAnimations();
   
-  const fullText = "Beyond the Syllabus 2026 is an empowering academic and tech-driven event designed to expose young minds to diverse skills in Web2 and Web3, while guiding them on how to choose, learn, and effectively balance these opportunities with academic success.";
+  const fullText = "Beyond the Syllabus 2026 is an academic and tech-driven event exposing young minds to Web3 and tech skills, while guiding them to balance innovation with academic success.";
   const [displayedText, setDisplayedText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -104,11 +104,6 @@ const Hero = ({ onOpenRegister }) => {
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center max-w-4xl mx-auto">
-          <div className="mb-6 reveal">
-            <span className="inline-block px-4 py-2 bg-purple-900/30 border border-purple-500/30 rounded-full text-sm font-semibold mb-4 text-purple-300 animate-slideInFromTop pulse-purple">
-              <i className="fas fa-calendar-alt mr-2 text-purple-400"></i>March 2026
-            </span>
-          </div>
           
           <h1 className="hero-title text-5xl md:text-7xl font-bold mb-6 leading-tight reveal text-white" style={{ animationDelay: '0.2s' }}>
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-purple-200">Beyond the</span>

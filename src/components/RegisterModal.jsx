@@ -76,13 +76,35 @@ const RegisterModal = ({ isOpen, onClose }) => {
               <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 text-green-500 text-4xl shadow-inner">
                 <i className="fas fa-check"></i>
               </div>
-              <h3 className="text-3xl font-bold text-purple-700 mb-4">Registration Successful!</h3>
-              <p className="text-lg text-purple-600 mb-8 max-w-xs mx-auto">
-                Thank you for applying. We have sent a confirmation email to your address and securely recorded your response.
+              <h3 className="text-3xl font-bold text-purple-700 mb-2">Registration Successful!</h3>
+              <p className="text-purple-600 mb-8 max-w-sm mx-auto">
+                Welcome to the community! To stay updated and connect with other attendees, join our official channels below:
               </p>
-              <button
+              
+              <div className="flex flex-col gap-4 mb-10">
+                <a 
+                  href="https://chat.whatsapp.com/JK1b4hnt4IX9b5teu2p51U" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center space-x-3 bg-[#25D366] hover:bg-[#128C7E] px-6 py-4 rounded-xl text-white font-bold transition-all hover:-translate-y-1 shadow-lg"
+                >
+                  <i className="fab fa-whatsapp text-2xl"></i>
+                  <span>Join WhatsApp Community</span>
+                </a>
+                <a 
+                  href="https://t.me/beyondthesyllabus0" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center space-x-3 bg-[#0088cc] hover:bg-[#0077b5] px-6 py-4 rounded-xl text-white font-bold transition-all hover:-translate-y-1 shadow-lg"
+                >
+                  <i className="fab fa-telegram-plane text-2xl"></i>
+                  <span>Join Telegram Channel</span>
+                </a>
+              </div>
+
+              <button 
                 onClick={onClose}
-                className="gradient-button px-8 py-4 rounded-full text-white font-bold transition-transform hover:-translate-y-1 w-full shadow-lg text-lg"
+                className="text-gray-400 hover:text-purple-600 font-semibold transition-colors duration-200"
               >
                 Close Window
               </button>

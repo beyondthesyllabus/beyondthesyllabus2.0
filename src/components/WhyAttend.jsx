@@ -48,7 +48,7 @@ const WhyAttend = () => {
           <h2 className={`text-4xl md:text-5xl font-bold mb-4 text-white transition-all duration-700 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             Why <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-purple-500">Attend?</span>
           </h2>
-          <p className={`text-xl text-white/70 transition-all duration-700 delay-200 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <p className={`text-xl text-white transition-all duration-700 delay-200 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             Beyond the Syllabus 2026 is a forward-thinking academic and tech experience designed to equip undergraduates with the knowledge, exposure, and direction needed to thrive beyond the classroom.
           </p>
         </div>
@@ -64,7 +64,7 @@ const WhyAttend = () => {
                 <i className={`${benefit.icon} text-purple-400 text-2xl`}></i>
               </div>
               <h3 className="text-xl font-bold mb-3 text-white">{benefit.title}</h3>
-              <p className="text-white/60 leading-relaxed text-sm">{benefit.description}</p>
+              <p className="text-white leading-relaxed text-sm opacity-90">{benefit.description}</p>
             </div>
           ))}
         </div>

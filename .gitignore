@@ -29,3 +29,6 @@ backend/vendor/
 *.njsproj
 *.sln
 *.sw?
+
+.vercel
+.env*.local

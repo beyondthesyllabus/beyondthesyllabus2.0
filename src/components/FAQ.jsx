@@ -93,35 +93,50 @@ const FAQ = () => {
   };
 
   return (
-    <section id="faq" ref={ref} className="py-20 bg-white overflow-hidden">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className={`text-4xl md:text-5xl font-bold mb-4 text-purple-700 transition-all duration-700 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            Frequently Asked <span className="text-purple-600">Questions</span>
+    <section id="faq" ref={ref} className="py-24 bg-white relative overflow-hidden">
+      {/* Background Decor */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_bottom_left,_rgba(242,236,255,0.3)_0%,_transparent_70%)] -z-10"></div>
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-20 max-w-3xl mx-auto">
+          <h2 className={`text-4xl md:text-5xl font-extrabold mb-5 text-black transition-all duration-700 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            Frequently Asked <span className="gradient-text">Questions</span>
           </h2>
-          <p className={`text-xl text-purple-600 transition-all duration-700 delay-200 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>Everything you need to know about the event</p>
+          <p className={`text-xl text-black font-medium opacity-60 transition-all duration-700 delay-200 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            Everything you need to know about the event.
+          </p>
         </div>
         
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto space-y-4">
           {faqs.map((faq, index) => (
-            <div key={index} className={`bg-white border border-purple-200 rounded-lg mb-4 transition-all duration-700 transform ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}`} style={{ transitionDelay: `${index * 150 + 300}ms` }}>
+            <div 
+              key={index} 
+              className={`bg-white border border-purple-100 rounded-2xl overflow-hidden transition-all duration-700 transform ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'} ${activeIndex === index ? 'shadow-[0_15px_40px_rgba(109,40,217,0.08)] border-purple-200' : 'hover:border-purple-200 hover:shadow-md'}`} 
+              style={{ transitionDelay: `${index * 50 + 300}ms` }}
+            >
               <button 
-                className="w-full text-left py-4 px-6 flex justify-between items-center hover:bg-purple-50 transition-colors duration-300"
+                className={`w-full text-left py-6 px-8 flex justify-between items-center transition-all duration-300 ${activeIndex === index ? 'bg-purple-50/30' : ''}`}
                 onClick={() => toggleFAQ(index)}
               >
-                <span className="text-lg font-semibold text-purple-700">{faq.question}</span>
-                <i 
-                  className={`fas fa-chevron-down transition-transform duration-300 text-purple-600 ${
-                    activeIndex === index ? 'rotate-180' : ''
-                  }`}
-                ></i>
+                <span className={`text-lg md:text-xl font-bold text-black transition-colors ${activeIndex === index ? 'text-purple-700' : ''}`}>
+                  {faq.question}
+                </span>
+                <div className={`w-8 h-8 rounded-full border border-purple-200 flex items-center justify-center transition-all duration-500 ${activeIndex === index ? 'bg-purple-600 border-purple-600 rotate-180' : 'text-purple-400'}`}>
+                  <i className={`fas fa-chevron-down text-sm ${activeIndex === index ? 'text-white' : ''}`}></i>
+                </div>
               </button>
+              
               <div 
-                className={`transition-all duration-300 ${
-                  activeIndex === index ? 'block' : 'hidden'
+                className={`transition-all duration-500 ease-in-out overflow-hidden ${
+                  activeIndex === index ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
                 }`}
               >
-                <p className="text-purple-600 pb-4 px-6">{faq.answer}</p>
+                <div className="px-8 pb-8">
+                  <div className="w-full h-[1px] bg-purple-100 mb-6"></div>
+                  <p className="text-black text-lg font-medium leading-relaxed opacity-80">
+                    {faq.answer}
+                  </p>
+                </div>
               </div>
             </div>
           ))}

@@ -68,12 +68,23 @@ def register():
                 email VARCHAR(255) NOT NULL,
                 department VARCHAR(255) NOT NULL,
                 level VARCHAR(50) NOT NULL,
-                interest ENUM('Tech', 'Web3', 'Both') NOT NULL,
+                interest VARCHAR(255) NOT NULL,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         """)
         
-        # 4. Insert data
+        # 4. Migration: Ensure existing table columns are large enough for new values
+        try:
+            cursor.execute("ALTER TABLE attendees MODIFY COLUMN interest VARCHAR(255)")
+        except Exception as alter_err:
+            print(f"Migration (interest) skipped or failed: {alter_err}")
+
+        try:
+            cursor.execute("ALTER TABLE attendees MODIFY COLUMN level VARCHAR(50)")
+        except Exception as alter_err:
+            print(f"Migration (level) skipped or failed: {alter_err}")
+
+        # 5. Insert data
         query = "INSERT INTO attendees (full_name, email, department, level, interest) VALUES (%s, %s, %s, %s, %s)"
         cursor.execute(query, (full_name, email, department, level, interest))
         conn.commit()
