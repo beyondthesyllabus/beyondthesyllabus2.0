@@ -6,48 +6,52 @@ const Partnership = () => {
 
 
   return (
-    <section id="sponsors" ref={ref} className="py-20 bg-white overflow-hidden">
-      <div className="container mx-auto px-6">
+    <section id="sponsors" ref={ref} className="py-24 bg-[#0f081d] relative overflow-hidden" style={{ backgroundColor: '#0f081d' }}>
+      {/* Background Decorative Elements */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-purple-600/5 rounded-full blur-[120px]"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-900/10 rounded-full blur-[120px]"></div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16 mx-auto max-w-4xl">
-          <h2 className={`text-sm md:text-base font-bold uppercase tracking-widest mb-2 text-purple-500 transition-all duration-700 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <h2 className={`text-sm md:text-base font-bold uppercase tracking-widest mb-4 text-purple-400 transition-all duration-700 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             Partnership Opportunities
           </h2>
-          <h3 className={`text-4xl md:text-5xl font-bold mb-4 text-purple-700 transition-all duration-700 delay-100 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            Become a <span className="gradient-text">Sponsor</span>
+          <h3 className={`text-4xl md:text-5xl font-bold mb-6 text-white transition-all duration-700 delay-100 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            Become a <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-purple-500">Sponsor</span>
           </h3>
-          <p className={`text-xl text-purple-600 transition-all duration-700 delay-200 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <p className={`text-xl text-white/70 transition-all duration-700 delay-200 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'} leading-relaxed max-w-3xl mx-auto`}>
             Position your brand at the forefront of innovation by partnering with Beyond the Syllabus 2026. Gain direct access to a vibrant community of undergraduates, tech enthusiasts, and emerging Web3 talents shaping the future.
           </p>
         </div>
         
         <div className="max-w-4xl mx-auto">
-          <div className={`bg-white border border-purple-200 rounded-lg p-6 text-center mb-8 transition-all duration-1000 transform ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`} style={{ transitionDelay: '300ms' }}>
-            <h3 className="text-2xl font-bold mb-4 text-purple-700">Why Sponsor Beyond the Syllabus 2026?</h3>
-            <p className="text-purple-600 mb-6">
-              Connect with 500+ bright undergraduate students, showcase your brand, and contribute to the next generation of tech leaders. Our event offers unparalleled access to emerging talent and innovative minds.
+          <div className={`bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 text-center mb-8 transition-all duration-1000 transform ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'} backdrop-blur-sm`} style={{ transitionDelay: '300ms' }}>
+            <h3 className="text-2xl md:text-3xl font-bold mb-6 text-white">Why Sponsor Beyond the Syllabus 2026?</h3>
+            <p className="text-white/60 mb-10 leading-relaxed text-lg italic">
+              "Connect with 500+ bright undergraduate students, showcase your brand, and contribute to the next generation of tech leaders. Our event offers unparalleled access to emerging talent and innovative minds."
             </p>
             
-            <div className={`mt-10 p-8 border border-purple-100 bg-purple-50 rounded-xl transition-all duration-700 transform ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`} style={{ transitionDelay: '500ms' }}>
-              <h4 className="text-2xl font-bold mb-3 text-purple-700">Get Our Sponsorship Deck</h4>
-              <p className="text-purple-600 mb-8 max-w-2xl mx-auto">
+            <div className={`mt-12 p-8 md:p-10 border border-purple-500/20 bg-purple-500/5 rounded-2xl transition-all duration-700 transform ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`} style={{ transitionDelay: '500ms' }}>
+              <h4 className="text-2xl font-bold mb-3 text-white">Get Our Sponsorship Deck</h4>
+              <p className="text-white/50 mb-10 max-w-2xl mx-auto">
                 Interested in sponsoring Beyond the Syllabus 2026? Reach out to us and we'll share our comprehensive sponsorship deck with all available packages and benefits.
               </p>
               
-              <div className="flex flex-col md:flex-row justify-center items-center gap-6">
-                <a href="mailto:partnership@beyondsyllabus.com" className="flex items-center text-lg font-bold text-purple-700 hover:text-purple-500 transition-colors">
-                  <i className="fas fa-envelope mr-3 text-2xl"></i>
+              <div className="flex flex-col md:flex-row justify-center items-center gap-8">
+                <a href="mailto:partnership@beyondsyllabus.com" className="group flex items-center text-lg font-bold text-white hover:text-purple-400 transition-all duration-300">
+                  <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center mr-4 group-hover:bg-purple-500/20 transition-all">
+                    <i className="fas fa-envelope text-purple-400 text-xl"></i>
+                  </div>
                   partnership@beyondsyllabus.com
                 </a>
-                <span className="text-purple-400 font-medium hidden md:inline">or</span>
-                <a href="#" className="flex items-center px-6 py-3 bg-[#0088cc] hover:bg-[#0077b5] text-white rounded-full font-bold transition-transform hover:-translate-y-1 shadow-md hover:shadow-lg">
-                  <i className="fab fa-telegram-plane mr-2 text-xl"></i>
+                <span className="text-white/20 font-medium hidden md:inline">|</span>
+                <a href="https://t.me/beyondTsyllabus" target="_blank" rel="noopener noreferrer" className="flex items-center px-8 py-4 bg-purple-600 hover:bg-purple-500 text-white rounded-xl font-bold transition-all hover:-translate-y-1 shadow-lg shadow-purple-600/20 active:scale-95">
+                  <i className="fab fa-telegram-plane mr-3 text-2xl"></i>
                   Message on Telegram
                 </a>
               </div>
             </div>
           </div>
-          
-
         </div>
       </div>
     </section>

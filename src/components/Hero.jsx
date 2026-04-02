@@ -96,55 +96,57 @@ const Hero = ({ onOpenRegister }) => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 bg-white" style={{ backgroundColor: '#FFFFFF' }}>
-      {/* Clean white background */}
-      <div className="absolute inset-0 bg-white" style={{ backgroundColor: '#FFFFFF', zIndex: -1 }}></div>
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 bg-[#0f081d]" style={{ backgroundColor: '#0f081d' }}>
+      {/* Background Decorative Elements */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-20"></div>
+      <div className="absolute -top-24 -left-24 w-96 h-96 bg-purple-600/10 rounded-full blur-[100px]"></div>
+      <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-900/20 rounded-full blur-[100px]"></div>
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center max-w-4xl mx-auto">
           <div className="mb-6 reveal">
-            <span className="inline-block px-4 py-2 bg-purple-100 border border-purple-300 rounded-full text-sm font-semibold mb-4 text-purple-700 animate-slideInFromTop pulse-purple">
-              <i className="fas fa-calendar-alt mr-2"></i>March 2026
+            <span className="inline-block px-4 py-2 bg-purple-900/30 border border-purple-500/30 rounded-full text-sm font-semibold mb-4 text-purple-300 animate-slideInFromTop pulse-purple">
+              <i className="fas fa-calendar-alt mr-2 text-purple-400"></i>March 2026
             </span>
           </div>
           
-          <h1 className="hero-title text-5xl md:text-7xl font-bold mb-6 leading-tight reveal text-black" style={{ animationDelay: '0.2s' }}>
-            <span>Beyond the</span>
-            <span> Syllabus</span>
-            <br />2026
+          <h1 className="hero-title text-5xl md:text-7xl font-bold mb-6 leading-tight reveal text-white" style={{ animationDelay: '0.2s' }}>
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-purple-200">Beyond the</span>
+            <br />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-200 to-purple-400">Syllabus 2026</span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-purple-600 mb-6 max-w-2xl mx-auto reveal" style={{ animationDelay: '0.4s' }}>
+          <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-2xl mx-auto reveal leading-relaxed" style={{ animationDelay: '0.4s' }}>
             {renderStyledText(displayedText)}
-            <span className="animate-pulse text-purple-500">|</span>
+            <span className="animate-pulse text-white">|</span>
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 reveal" style={{ animationDelay: '0.6s' }}>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16 reveal" style={{ animationDelay: '0.6s' }}>
             <button 
               ref={magneticButtonRef}
               onClick={onOpenRegister}
-              className="gradient-button px-8 py-4 rounded-full text-lg font-semibold text-white magnetic-button animate-glow"
+              className="gradient-button px-10 py-5 rounded-xl text-lg font-bold text-white shadow-2xl shadow-purple-600/20 hover:shadow-purple-600/40 transform transition-all active:scale-95"
             >
-              <i className="fas fa-ticket-alt mr-2"></i>Register Now
+              <i className="fas fa-ticket-alt mr-2 text-white/80"></i>Register Now
             </button>
           </div>
           
-          <div ref={statsRef} className="flex justify-center space-x-8 text-purple-500">
-            <div className="text-center reveal animate-stagger-1">
-              <div className="text-2xl font-bold text-purple-700 text-glow-purple pulse-purple">{counters.students}+</div>
-              <div className="text-sm">Students</div>
+          <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
+            <div className="text-center reveal animate-stagger-1 p-6 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm">
+              <div className="text-3xl font-bold text-white mb-1">{counters.students}+</div>
+              <div className="text-xs uppercase tracking-widest text-white/70 font-semibold">Students</div>
             </div>
-            <div className="text-center reveal animate-stagger-2">
-              <div className="text-2xl font-bold text-purple-600 text-glow-purple pulse-purple">{counters.speakers}+</div>
-              <div className="text-sm">Speakers</div>
+            <div className="text-center reveal animate-stagger-2 p-6 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm">
+              <div className="text-3xl font-bold text-white mb-1">{counters.speakers}+</div>
+              <div className="text-xs uppercase tracking-widest text-white/70 font-semibold">Speakers</div>
             </div>
-            <div className="text-center reveal animate-stagger-3">
-              <div className="text-2xl font-bold text-purple-800 text-glow-purple pulse-purple">{counters.workshops}+</div>
-              <div className="text-sm">Workshops</div>
+            <div className="text-center reveal animate-stagger-3 p-6 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm">
+              <div className="text-3xl font-bold text-white mb-1">{counters.workshops}+</div>
+              <div className="text-xs uppercase tracking-widest text-white/70 font-semibold">Workshops</div>
             </div>
-            <div className="text-center reveal animate-stagger-4">
-              <div className="text-2xl font-bold text-purple-700 text-glow-purple pulse-purple">{counters.sponsors}+</div>
-              <div className="text-sm">Sponsors</div>
+            <div className="text-center reveal animate-stagger-4 p-6 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm">
+              <div className="text-3xl font-bold text-white mb-1">{counters.sponsors}+</div>
+              <div className="text-xs uppercase tracking-widest text-white/70 font-semibold">Sponsors</div>
             </div>
           </div>
         </div>

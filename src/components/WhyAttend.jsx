@@ -38,25 +38,33 @@ const WhyAttend = () => {
   ];
 
   return (
-    <section id="why-attend" ref={ref} className="py-20 bg-white overflow-hidden">
-      <div className="container mx-auto px-6">
+    <section id="why-attend" ref={ref} className="py-24 bg-[#0f081d] relative overflow-hidden" style={{ backgroundColor: '#0f081d' }}>
+      {/* Background Decorative Elements */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/5 rounded-full blur-[120px]"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-900/10 rounded-full blur-[120px]"></div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16 mx-auto max-w-4xl">
-          <h2 className={`text-4xl md:text-5xl font-bold mb-4 text-purple-700 transition-all duration-700 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            Why <span className="gradient-text">Attend?</span>
+          <h2 className={`text-4xl md:text-5xl font-bold mb-4 text-white transition-all duration-700 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            Why <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-purple-500">Attend?</span>
           </h2>
-          <p className={`text-xl text-purple-600 transition-all duration-700 delay-200 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <p className={`text-xl text-white/70 transition-all duration-700 delay-200 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             Beyond the Syllabus 2026 is a forward-thinking academic and tech experience designed to equip undergraduates with the knowledge, exposure, and direction needed to thrive beyond the classroom.
           </p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {benefits.map((benefit, index) => (
-            <div key={index} className={`bg-white border border-purple-200 rounded-lg p-6 text-center transition-all duration-700 hover:-translate-y-2 hover:shadow-lg transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`} style={{ transitionDelay: `${index * 150 + 300}ms` }}>
-              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i className={`${benefit.icon} text-white text-2xl`}></i>
+            <div 
+              key={index} 
+              className={`bg-white/5 border border-white/10 rounded-2xl p-8 text-center transition-all duration-700 hover:bg-white/10 hover:-translate-y-2 hover:border-purple-500/50 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`} 
+              style={{ transitionDelay: `${index * 150 + 300}ms` }}
+            >
+              <div className="w-16 h-16 bg-gradient-to-br from-purple-500/20 to-purple-800/20 border border-purple-500/30 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-purple-500/10">
+                <i className={`${benefit.icon} text-purple-400 text-2xl`}></i>
               </div>
-              <h3 className="text-xl font-bold mb-3 text-purple-700">{benefit.title}</h3>
-              <p className="text-purple-600">{benefit.description}</p>
+              <h3 className="text-xl font-bold mb-3 text-white">{benefit.title}</h3>
+              <p className="text-white/60 leading-relaxed text-sm">{benefit.description}</p>
             </div>
           ))}
         </div>

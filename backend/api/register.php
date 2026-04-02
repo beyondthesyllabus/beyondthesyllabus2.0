@@ -81,16 +81,20 @@ try {
 
     $mail->setFrom(SMTP_USER, 'Beyond Syllabus System');
     $mail->addAddress(ORGANIZER_EMAIL, 'Organizer');
+    $mail->addAddress($email, $fullName); // Add the registrant
 
     $mail->isHTML(false); 
-    $mail->Subject = 'New Registration - Beyond the Syllabus 2026';
+    $mail->Subject = 'Registration Confirmation - Beyond the Syllabus 2026';
     
     $dateStr = date('Y-m-d H:i:s');
     
     // Using Heredoc for accurate formatting matching the required blueprint
     $body = <<<EOT
-New Registration - Beyond the Syllabus 2026
+Hello $fullName,
 
+Thank you for registering for Beyond the Syllabus 2026!
+
+Your details have been received:
 Name: $fullName  
 Email: $email  
 Department: $department  
@@ -98,6 +102,11 @@ Level: $level
 Interest: $interest  
 
 Date: $dateStr
+
+We look forward to seeing you there!
+
+Best regards,
+Beyond Syllabus Team
 EOT;
 
     $mail->Body = $body;
