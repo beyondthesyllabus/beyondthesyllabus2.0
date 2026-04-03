@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/register",
-      "destination": "/api/register"
+      "destination": "/api/register.py"
     }
   ]
 }

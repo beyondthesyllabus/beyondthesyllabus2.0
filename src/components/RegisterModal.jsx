@@ -38,16 +38,15 @@ const RegisterModal = ({ isOpen, onClose }) => {
       if (data.status === 'success') {
         setStatus('success');
         setMessage(data.message);
-        // Clear form correctly on successful delivery
         setFormData({ fullName: '', email: '', department: '', level: '', interest: '' });
       } else {
         setStatus('error');
-        // Show the actual message from PHP if it exists
         setMessage(data.message || 'Server-side validation failed. Please check all fields.');
       }
     } catch (error) {
+      console.error('Registration Fetch Error:', error);
       setStatus('error');
-      setMessage('Network error. Ensure the Python Flask backend is running!');
+      setMessage(`Connection Error: ${error.message}. If the issue persists, your internet or the backend server might be temporarily down.`);
     }
   };
 
@@ -80,20 +79,20 @@ const RegisterModal = ({ isOpen, onClose }) => {
               <p className="text-purple-600 mb-8 max-w-sm mx-auto">
                 Welcome to the community! To stay updated and connect with other attendees, join our official channels below:
               </p>
-              
+
               <div className="flex flex-col gap-4 mb-10">
-                <a 
-                  href="https://chat.whatsapp.com/JK1b4hnt4IX9b5teu2p51U" 
-                  target="_blank" 
+                <a
+                  href="https://chat.whatsapp.com/JK1b4hnt4IX9b5teu2p51U"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center space-x-3 bg-[#25D366] hover:bg-[#128C7E] px-6 py-4 rounded-xl text-white font-bold transition-all hover:-translate-y-1 shadow-lg"
                 >
                   <i className="fab fa-whatsapp text-2xl"></i>
                   <span>Join WhatsApp Community</span>
                 </a>
-                <a 
-                  href="https://t.me/beyondthesyllabus0" 
-                  target="_blank" 
+                <a
+                  href="https://t.me/beyondthesyllabus0"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center space-x-3 bg-[#0088cc] hover:bg-[#0077b5] px-6 py-4 rounded-xl text-white font-bold transition-all hover:-translate-y-1 shadow-lg"
                 >
@@ -102,7 +101,7 @@ const RegisterModal = ({ isOpen, onClose }) => {
                 </a>
               </div>
 
-              <button 
+              <button
                 onClick={onClose}
                 className="text-gray-400 hover:text-purple-600 font-semibold transition-colors duration-200"
               >
@@ -206,7 +205,7 @@ const RegisterModal = ({ isOpen, onClose }) => {
                   </span>
                 ) : (
                   <span className="flex items-center justify-center space-x-2">
-                    <span>Submit Backend Registration</span>
+                    <span>Submit  Registration</span>
                     <i className="fas fa-arrow-right"></i>
                   </span>
                 )}
