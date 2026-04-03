@@ -23,12 +23,7 @@ const Footer = () => {
           {/* Brand Column */}
           <div className={`lg:col-span-4 transition-all duration-700 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`} style={{ transitionDelay: '100ms' }}>
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/20">
-                <i className="fas fa-rocket text-white text-xl"></i>
-              </div>
-              <span className="text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-purple-200">
-                Beyond Syllabus
-              </span>
+              <img src="/images/white logo.png" alt="Beyond Syllabus Logo" className="h-16 w-auto object-contain" />
             </div>
             <p className="text-white/70 text-lg leading-relaxed mb-8 max-w-sm">
               Empowering the next generation of tech leaders by bridging the gap between classroom theory and real-world innovation.
@@ -81,15 +76,15 @@ const Footer = () => {
               </li>
               <li className="flex items-start">
                 <i className="fas fa-phone mt-1.5 mr-3 text-white/40"></i>
-                <a href="tel:07047788318" className="hover:text-white transition-colors cursor-pointer">07047788318</a>
+                <a href="tel:09168721123" className="hover:text-white transition-colors cursor-pointer">09168721123</a>
               </li>
               <li className="flex items-start">
                 <i className="fab fa-whatsapp mt-1.5 mr-3 text-white/40"></i>
-                <a href="https://wa.me/2347047788318" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors cursor-pointer">WhatsApp Us</a>
+                <a href="https://wa.me/2349168721123" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors cursor-pointer">WhatsApp Us</a>
               </li>
               <li className="flex items-start">
                 <i className="fas fa-map-marker-alt mt-1.5 mr-3 text-white/40"></i>
-                <span>Venue:<br />Yet to be disclosed</span>
+                <span>Venue:<br />University of Uyo, Faculty of Engineering</span>
               </li>
             </ul>
           </div>

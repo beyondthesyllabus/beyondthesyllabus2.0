@@ -33,7 +33,14 @@ const RegisterModal = ({ isOpen, onClose }) => {
         body: JSON.stringify(formData)
       });
 
-      const data = await response.json();
+      let data;
+      const contentType = response.headers.get("content-type");
+      if (contentType && contentType.indexOf("application/json") !== -1) {
+        data = await response.json();
+      } else {
+        const text = await response.text();
+        throw new Error(`Server returned unexpected format. Detail: ${text.slice(0, 50)}...`);
+      }
 
       if (data.status === 'success') {
         setStatus('success');

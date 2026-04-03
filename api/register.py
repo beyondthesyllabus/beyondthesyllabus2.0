@@ -15,10 +15,16 @@ import ssl
 app = Flask(__name__)
 CORS(app)
 
-# Database Configuration
+# Database Configuration (with safer defaults)
+def get_db_port():
+    try:
+        return int(os.environ.get('TIDB_PORT', os.environ.get('DB_PORT', '4000')))
+    except (ValueError, TypeError):
+        return 4000
+
 DB_CONFIG = {
     'host': os.environ.get('TIDB_HOST', os.environ.get('DB_HOST', 'localhost')),
-    'port': int(os.environ.get('TIDB_PORT', os.environ.get('DB_PORT', '4000'))),
+    'port': get_db_port(),
     'user': os.environ.get('TIDB_USER', os.environ.get('DB_USER', 'root')),
     'password': os.environ.get('TIDB_PASSWORD', os.environ.get('DB_PASS', '')),
     'database': os.environ.get('DB_NAME', os.environ.get('TIDB_DATABASE', 'beyond_syllabus')),
@@ -47,12 +53,15 @@ def register():
         if not all([full_name, email, department, level, interest]):
             return jsonify({"status": "error", "message": "All fields are required"}), 400
 
-        # 1. Connect first without selecting a database
+        # 1. Connect without selecting a database (includes SSL for cloud databases)
+        ssl_config = {"ssl_verify_identity": True} if DB_CONFIG['port'] == 4000 else {}
+        
         conn = mysql.connector.connect(
             host=DB_CONFIG['host'],
             port=DB_CONFIG['port'],
             user=DB_CONFIG['user'],
-            password=DB_CONFIG['password']
+            password=DB_CONFIG['password'],
+            **ssl_config
         )
         cursor = conn.cursor()
         

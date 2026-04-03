@@ -21,10 +21,7 @@ const Navigation = ({ isScrolled, onOpenRegister }) => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center relative z-[60]">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <i className="fas fa-rocket text-white"></i>
-              </div>
-              <span className={`text-xl font-bold transition-colors ${isMobileMenuOpen ? 'text-white' : 'text-purple-700'}`}>Beyond Syllabus 2026</span>
+              <img src="/images/coloured logo.png" alt="Beyond Syllabus Logo" className="h-14 w-auto object-contain" />
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
