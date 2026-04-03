@@ -177,7 +177,7 @@ const RegisterModal = ({ isOpen, onClose }) => {
                     <option value="200">200 Level</option>
                     <option value="300">300 Level</option>
                     <option value="400">400 Level</option>
-                    <option value="500+">500+ Level</option>
+                    <option value="500">500 Level</option>
                     <option value="Graduate">Graduate</option>
                     <option value="Others">Others</option>
                   </select>
