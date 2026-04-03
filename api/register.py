@@ -54,7 +54,7 @@ def register():
             return jsonify({"status": "error", "message": "All fields are required"}), 400
 
         # 1. Connect without selecting a database (includes SSL for cloud databases)
-        ssl_config = {"ssl_verify_identity": True} if DB_CONFIG['port'] == 4000 else {}
+        ssl_config = {"ssl_verify_identity": False, "ssl_verify_cert": False} if DB_CONFIG['port'] == 4000 else {}
         
         conn = mysql.connector.connect(
             host=DB_CONFIG['host'],
