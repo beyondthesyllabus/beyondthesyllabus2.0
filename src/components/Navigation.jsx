@@ -21,7 +21,7 @@ const Navigation = ({ isScrolled, onOpenRegister }) => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center relative z-[60]">
             <div className="flex items-center space-x-2">
-              <img src="/images/coloured logo.png" alt="Beyond Syllabus Logo" className="h-14 w-auto object-contain" />
+              <img src={isMobileMenuOpen ? "/images/white logo.png" : "/images/coloured logo.png"} alt="Beyond Syllabus Logo" className="h-14 w-auto object-contain transition-all duration-300" />
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
