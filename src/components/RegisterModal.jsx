@@ -194,9 +194,9 @@ const RegisterModal = ({ isOpen, onClose }) => {
                   className="w-full px-5 py-3 bg-purple-50/50 border border-purple-100 rounded-xl focus:outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 transition-all text-purple-900 font-medium"
                 >
                   <option value="" disabled>Select</option>
-                  <option value="web2 skills">web2 skills</option>
-                  <option value="web3 skills">web3 skills</option>
-                  <option value="both web2 and web3">both web2 and web3</option>
+                  <option value="web3">web3</option>
+                  <option value="Tech">Tech</option>
+                  <option value="both tech and web3">both tech and web3</option>
                 </select>
               </div>
 
